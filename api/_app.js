@@ -2,6 +2,7 @@ import "reflect-metadata";
 import { createConnection } from "typeorm";
 import { hook } from "@modern-js/runtime/server";
 import WsServer from "./_ws";
+import logger from "./_common/utils/logger";
 
 const wsServer = new WsServer();
 wsServer.start(8081);
@@ -18,9 +19,9 @@ createConnection({
   logging: false,
 })
   .then((connection) => {
-    console.log("db connected");
+    logger.info("[db] connected");
   })
-  .catch((error) => console.log(error));
+  .catch((error) => logger.error(error));
 
 export default hook(({ addMiddleware }) => {
   addMiddleware(async (req, res, next) => {

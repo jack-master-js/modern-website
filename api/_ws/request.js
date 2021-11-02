@@ -2,7 +2,7 @@ import logger from "../_common/utils/logger";
 
 export default (player) => {
   player.on("ping", (msg) => {
-    console.info(msg);
+    logger.info(msg);
     player.emit("pong", {
       clientTime: msg.clientTime,
       serverTime: Date.now(),

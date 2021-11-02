@@ -32,14 +32,6 @@ export default () => {
         );
       }, 1000);
     };
-
-    ws.onclose = () => {
-      console.log("onclose");
-    };
-
-    ws.onerror = (e) => {
-      console.log("onerror");
-    };
   }, []);
 
   return (
