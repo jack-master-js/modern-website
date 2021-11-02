@@ -1,20 +1,29 @@
-import User from './_entity/user1'
+import { getRepository } from "typeorm";
+import { User } from "../_entity/User";
+
 /**
-   * @api {GET} /api/user 用户
-   * @apiGroup User
-   *
-   * @apiUse UserModel
-   */
+ * @api {GET} /api/user 获取用户
+ * @apiGroup User
+ *
+ * @apiUse UserModel
+ */
 export const GET = async (req) => {
-    return {code: 0, message: 'ok'}
-}
+  let res = await getRepository(User).find();
+  return { code: 0, data: res };
+};
+
 export const POST = async (req) => {
-    try {
-        await User.create(req.data)
-        return {code: 0, message: 'ok'}
-    } catch (error) {
-        return error
-    }
-}
+  try {
+    let user = new User();
+    user.name = "test";
+    user.age = 18;
+
+    let res = await getRepository(User).save(user);
+
+    return { code: 0, data: res };
+  } catch (error) {
+    return error;
+  }
+};
 // export const PUT = async (req) => {}
 // export const DELETE = async (req) => {}
