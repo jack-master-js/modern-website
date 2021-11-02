@@ -1,11 +1,10 @@
 import "reflect-metadata";
 import { createConnection } from "typeorm";
 import { hook } from "@modern-js/runtime/server";
-import WsServer from "./_ws";
+import ws from "./_ws";
 import logger from "./_common/utils/logger";
 
-const wsServer = new WsServer();
-wsServer.start(8081);
+ws.start(8081);
 
 createConnection({
   type: "postgres",

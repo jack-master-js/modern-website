@@ -132,4 +132,4 @@ class WsServer {
   }
 }
 
-export default WsServer;
+export default new WsServer();
