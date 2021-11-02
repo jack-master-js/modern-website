@@ -18,20 +18,20 @@ export default () => {
   useEffect(() => {
     load();
 
-    const ws = new WebSocket("ws://localhost:8081?token=test");
-    ws.onopen = () => {
-      console.log("onopen");
+    // const ws = new WebSocket("ws://localhost:8081?token=test");
+    // ws.onopen = () => {
+    //   console.log("onopen");
 
-      ws.onmessage = async (msg) => {
-        console.log(JSON.parse(msg.data));
-      };
+    //   ws.onmessage = async (msg) => {
+    //     console.log(JSON.parse(msg.data));
+    //   };
 
-      setInterval(() => {
-        ws.send(
-          JSON.stringify({ cmd: "ping", msg: { clientTime: Date.now() } })
-        );
-      }, 1000);
-    };
+    //   setInterval(() => {
+    //     ws.send(
+    //       JSON.stringify({ cmd: "ping", msg: { clientTime: Date.now() } })
+    //     );
+    //   }, 1000);
+    // };
   }, []);
 
   return (
