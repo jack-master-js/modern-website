@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { useModel } from "@modern-js/runtime/model";
 import countModel from "@/models/count";
 import userModel from "@/models/users";
-import { useLoader } from '@modern-js/runtime';
-import {GET as getUsers} from '@api/user';
+import { useLoader } from "@modern-js/runtime";
+import { GET as getUsers } from "@api/user";
 
 export default () => {
   const [state, actions] = useModel(countModel);
-  const [{users},{load}] = useModel(userModel);
+  const [{ users }, { load }] = useModel(userModel);
 
   //ssr
   const users1 = useLoader(async () => {
@@ -16,8 +16,31 @@ export default () => {
   });
 
   useEffect(() => {
-    load()
-  },[])
+    load();
+
+    const ws = new WebSocket("ws://localhost:8081?token=test");
+    ws.onopen = () => {
+      console.log("onopen");
+
+      ws.onmessage = async (msg) => {
+        console.log(JSON.parse(msg.data));
+      };
+
+      setInterval(() => {
+        ws.send(
+          JSON.stringify({ cmd: "ping", msg: { clientTime: Date.now() } })
+        );
+      }, 1000);
+    };
+
+    ws.onclose = () => {
+      console.log("onclose");
+    };
+
+    ws.onerror = (e) => {
+      console.log("onerror");
+    };
+  }, []);
 
   return (
     <>

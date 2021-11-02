@@ -38,11 +38,13 @@
     "@modern-js/plugin-less": "1.0.0",
     "@modern-js/runtime": "^1.0.0",
     "express": "^4.17.1",
+    "log4js": "^6.3.0",
     "pg": "^8.7.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.38"
+    "typeorm": "^0.2.38",
+    "ws": "^8.2.3"
   },
   "devDependencies": {
     "@modern-js/app-tools": "^1.0.0",
