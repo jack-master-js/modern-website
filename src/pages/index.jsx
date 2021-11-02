@@ -1,46 +1,35 @@
-import './index.css';
+import React, { useEffect } from "react";
+import { useModel } from "@modern-js/runtime/model";
+import countModel from "@/models/count";
+import userModel from "@/models/users";
+import { useLoader } from '@modern-js/runtime';
+import {GET as getUsers} from '@api/user';
 
-const Index = () => (
-    <div className="container">
-      <main>
-        <div className="logo">
-          <img
-            src="https://lf3-static.bytednsdoc.com/obj/eden-cn/ylaelkeh7nuhfnuhf/modernjs-cover.png"
-            width="300"
-            alt="Modern.js Logo"
-          />
-        </div>
-        <p className="description">
-          Get started by editing <code className="code">src/Index.jsx</code>
-        </p>
-        <div className="grid">
-          <a href="https://modernjs.dev/docs/start" className="card">
-            <h2>Quick Start</h2>
-          </a>
-          <a href="https://modernjs.dev/docs/guides" className="card">
-            <h2>Handbook</h2>
-          </a>
-          <a href="https://modernjs.dev/docs/apis" className="card">
-            <h2>API Reference </h2>
-          </a>
-          <a
-            href="https://modernjs.dev/docs/community"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="card">
-            <h2>Community </h2>
-          </a>
-        </div>
-      </main>
-      <footer className="footer">
-        <a
-          href="https://modernjs.dev"
-          target="_blank"
-          rel="noopener noreferrer">
-          Powered by Modern.js
-        </a>
-      </footer>
-    </div>
-);
+export default () => {
+  const [state, actions] = useModel(countModel);
+  const [{users},{load}] = useModel(userModel);
 
-export default Index;
+  //ssr
+  const users1 = useLoader(async () => {
+    const res = await getUsers();
+    return res;
+  });
+
+  useEffect(() => {
+    load()
+  },[])
+
+  return (
+    <>
+      <div>
+        <div>counter: {state.count}</div>
+        <button onClick={() => actions.add()}>add</button>
+        <button onClick={() => actions.setCount(state.count + 1)}>
+          set count
+        </button>
+      </div>
+      <div>{JSON.stringify(users)}</div>
+      <div>{JSON.stringify(users1)}</div>
+    </>
+  );
+};
