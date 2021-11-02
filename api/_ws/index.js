@@ -13,11 +13,11 @@ class WsServer {
   async start(port) {
     this.server = new WebSocket.Server({ port });
     this.server.on("connection", (socket, req) => {
-      logger.info(`[ws server] connection origin: ${req.headers.origin}`);
-      logger.info(`[ws server] connection url: ${req.url}`);
+      logger.info(`[ ws ] connection origin: ${req.headers.origin}`);
+      logger.info(`[ ws ] connection url: ${req.url}`);
 
       socket.on("error", (e) => {
-        logger.error(`[ws server] ${socket.id} socket error: ${e.message}`);
+        logger.error(`[ ws ] ${socket.id} socket error: ${e.message}`);
       });
 
       // distribute the user from different path
@@ -128,7 +128,7 @@ class WsServer {
   }
 
   async close() {
-    logger.error(`[ws server] wsServer is closed.`);
+    logger.error(`[ ws ] wsServer is closed.`);
   }
 }
 
