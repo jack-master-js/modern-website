@@ -12,5 +12,7 @@ export default async (req, res, next) => {
         res.send(`/uploads/${req.file.filename}`);
       }
     });
+  } else {
+    next();
   }
 };
