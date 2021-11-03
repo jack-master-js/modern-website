@@ -45,6 +45,16 @@ export default () => {
       </div>
       <div>{JSON.stringify(users)}</div>
       <div>{JSON.stringify(users1)}</div>
+      <div>
+        <form
+          action="http://localhost:8080/api/upload"
+          method="post"
+          encType="multipart/form-data"
+        >
+          <input type="file" name="file" />
+          <button type="submit">提交</button>
+        </form>
+      </div>
     </>
   );
 };

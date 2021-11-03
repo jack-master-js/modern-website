@@ -3,6 +3,7 @@ import { createConnection } from "typeorm";
 import { hook } from "@modern-js/runtime/server";
 import ws from "./_ws";
 import logger from "./_common/utils/logger";
+import upload from "./_middleware/upload";
 
 ws.start(8081);
 
@@ -23,8 +24,5 @@ createConnection({
   .catch((error) => logger.error(error));
 
 export default hook(({ addMiddleware }) => {
-  addMiddleware(async (req, res, next) => {
-    console.info(`access url: ${req.url}`);
-    next();
-  });
+  addMiddleware(upload);
 });
