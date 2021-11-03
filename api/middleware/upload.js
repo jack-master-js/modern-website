@@ -1,5 +1,5 @@
-import logger from "../_common/utils/logger";
-import multer from "../_common/utils/multer";
+import logger from "@api/utils/logger";
+import multer from "@api/utils/multer";
 
 export default async (req, res, next) => {
   if (req.url === "/api/upload") {

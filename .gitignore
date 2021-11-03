@@ -28,8 +28,7 @@ release/
 output/
 output_resource/
 logs/
-apidoc/
-config/public/uploads
+public/
 
 .vscode/**/*
 !.vscode/settings.json

@@ -1,5 +1,5 @@
 import { getRepository } from "typeorm";
-import { User } from "../_entity/User";
+import { User } from "@api/entity/User";
 
 /**
  * @api {GET} /api/user 获取用户

@@ -1,4 +1,4 @@
-import logger from "../_common/utils/logger";
+import logger from "@api/utils/logger";
 
 export default (player) => {
   player.on("ping", (msg) => {

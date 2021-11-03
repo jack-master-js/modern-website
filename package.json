@@ -8,7 +8,7 @@
     "start": "modern start",
     "new": "modern new",
     "lint": "modern lint",
-    "apidoc": "apidoc -i api/ -o apidoc"
+    "apidoc": "apidoc -i api/lambda/ api/entity/ -o public/apidoc"
   },
   "engines": {
     "node": ">=14.17.6"
@@ -36,8 +36,14 @@
     "@modern-js/plugin-bff": "^1.0.0",
     "@modern-js/plugin-express": "^1.0.0",
     "@modern-js/plugin-less": "1.0.0",
+    "@modern-js/plugin-server-build": "^1.0.0",
     "@modern-js/runtime": "^1.0.0",
+    "compression": "^1.7.4",
+    "connect-timeout": "^1.9.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "log4js": "^6.3.0",
     "md5": "^2.3.0",
     "multer": "^1.4.3",
@@ -46,6 +52,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "reflect-metadata": "^0.1.13",
+    "response-time": "^2.3.2",
     "typeorm": "^0.2.38",
     "ws": "^8.2.3"
   },
@@ -58,6 +65,11 @@
     "runtime": {
       "router": true,
       "state": true
+    },
+    "source": {
+      "alias": {
+        "@api": "./api"
+      }
     }
   },
   "apidoc": {

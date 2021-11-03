@@ -5,7 +5,7 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     try {
       // if (!req.body.name) throw Error("need name field.");
-      cb(null, `config/public/uploads/`);
+      cb(null, `public/uploads/`);
     } catch (error) {
       cb(error);
     }

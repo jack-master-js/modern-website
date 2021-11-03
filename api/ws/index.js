@@ -1,6 +1,6 @@
 import WebSocket from "ws";
-import logger from "../_common/utils/logger";
-import { getWsClientIp, getQueryStr } from "../_common/utils";
+import logger from "@api/utils/logger";
+import { getWsClientIp, getQueryStr } from "@api/utils";
 import queryString from "querystring";
 import Player from "./Player";
 

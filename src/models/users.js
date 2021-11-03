@@ -1,5 +1,5 @@
 import { model } from '@modern-js/runtime/model';
-import {GET as users} from '@api/user';
+import {GET as users} from '@api/lambda/user';
 
 export default model("user").define({
   state: {
