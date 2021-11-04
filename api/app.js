@@ -13,7 +13,6 @@ import auth from "@api/middleware/auth";
 import path from "path";
 import multer from "@api/utils/multer";
 
-const upload = multer.single("file");
 const { WS_PORT, DATABASE_TYPE, DB_HOST, DB_PORT, DB_USER, DB_PASS, DATABASE } =
   process.env;
 const app = express();
@@ -35,7 +34,7 @@ createConnection({
   })
   .catch((error) => logger.error(error));
 
-// app.use(express.static(path.join(__dirname , '..', "/public")));
+app.use(express.static(path.join(__dirname, "..", "/public")));
 app.use(cors());
 
 // session
