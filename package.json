@@ -63,7 +63,7 @@
   },
   "modernConfig": {
     "server": {
-      "port": 3000
+      "port": 8080
     },
     "runtime": {
       "router": true,

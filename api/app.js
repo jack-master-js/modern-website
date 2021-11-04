@@ -9,10 +9,13 @@ import compression from "compression";
 import { createConnection } from "typeorm";
 import ws from "@api/ws";
 import logger from "@api/utils/logger";
-import upload from "@api/middleware/upload";
+import auth from "@api/middleware/auth";
 import path from "path";
+import multer from "@api/utils/multer";
 
-const {WS_PORT,DATABASE_TYPE,DB_HOST,DB_PORT,DB_USER,DB_PASS,DATABASE} = process.env
+const upload = multer.single("file");
+const { WS_PORT, DATABASE_TYPE, DB_HOST, DB_PORT, DB_USER, DB_PASS, DATABASE } =
+  process.env;
 const app = express();
 ws.start(WS_PORT);
 
@@ -32,7 +35,7 @@ createConnection({
   })
   .catch((error) => logger.error(error));
 
-app.use(express.static(path.join(__dirname , '..', "/public")));
+// app.use(express.static(path.join(__dirname , '..', "/public")));
 app.use(cors());
 
 // session
@@ -59,6 +62,11 @@ app.use(
 app.use(timeout("3s")); //req.timeout
 
 // middleware
-app.use(upload);
+// app.use(auth);
+
+// route
+app.post("/api/upload", multer.single("file"), (req, res, next) => {
+  res.send(`/uploads/${req.file.filename}`);
+});
 
 export default app;
