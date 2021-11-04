@@ -12,16 +12,17 @@ import logger from "@api/utils/logger";
 import upload from "@api/middleware/upload";
 import path from "path";
 
+const {WS_PORT,DATABASE_TYPE,DB_HOST,DB_PORT,DB_USER,DB_PASS,DATABASE} = process.env
 const app = express();
-ws.start(8081);
+ws.start(WS_PORT);
 
 createConnection({
-  type: "postgres",
-  host: "localhost",
-  port: 5432,
-  username: "root",
-  password: "123456",
-  database: "test",
+  type: DATABASE_TYPE,
+  host: DB_HOST,
+  port: DB_PORT,
+  username: DB_USER,
+  password: DB_PASS,
+  database: DATABASE,
   entities: [path.join(__dirname, "/entity/*.js")],
   synchronize: true,
   logging: false,

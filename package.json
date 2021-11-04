@@ -62,6 +62,9 @@
     "@types/express": "^4.17.13"
   },
   "modernConfig": {
+    "server": {
+      "port": 3000
+    },
     "runtime": {
       "router": true,
       "state": true
@@ -77,6 +80,6 @@
     "description": "API document",
     "version": "0.1.0",
     "title": "Node Api Document",
-    "sampleUrl": "http://localhost:8080"
+    "sampleUrl": "http://localhost:3000"
   }
 }
