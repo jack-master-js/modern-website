@@ -8,7 +8,7 @@
     "start": "modern start",
     "new": "modern new",
     "lint": "modern lint",
-    "apidoc": "apidoc -i api/lambda/ api/entity/ -o public/apidoc"
+    "apidoc": "apidoc -i api/ -o apidoc"
   },
   "engines": {
     "node": ">=14.17.6"

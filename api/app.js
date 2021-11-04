@@ -34,7 +34,6 @@ createConnection({
   })
   .catch((error) => logger.error(error));
 
-app.use(express.static(path.join(__dirname, "..", "/public")));
 app.use(cors());
 
 // session
@@ -64,6 +63,10 @@ app.use(timeout("3s")); //req.timeout
 // app.use(auth);
 
 // route
+/**
+ * @api {POST} /api/upload 上传文件
+ * @apiGroup Upload
+ */
 app.post("/api/upload", multer.single("file"), (req, res, next) => {
   res.send(`/uploads/${req.file.filename}`);
 });
