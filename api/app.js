@@ -14,7 +14,7 @@ import path from "path";
 import multer from "@api/utils/multer";
 
 const app = express();
-// app.use(cors());
+app.use(cors());
 
 console.log(process.env.NODE_ENV);
 

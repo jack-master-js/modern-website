@@ -29,6 +29,7 @@ output/
 output_resource/
 logs/
 public/
+doc/
 
 .vscode/**/*
 !.vscode/settings.json

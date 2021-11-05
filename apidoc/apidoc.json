@@ -3,9 +3,9 @@
   "description": "API document",
   "version": "0.1.0",
   "title": "Node Api Document",
-  "sampleUrl": "http://localhost:3000",
+  "sampleUrl": "http://localhost:8080",
   "header": {
-    "title": "My own header title",
+    "title": "Introduction",
     "filename": "header.md"
   }
 }

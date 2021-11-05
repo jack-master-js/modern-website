@@ -1,7 +1,9 @@
 import logger from "@api/utils/logger";
+import { useContext } from "@modern-js/runtime/server";
 
 class Response {
-  success(req) {
+  success() {
+    const { req } = useContext();
     logger.info(
       `[http server] request ${req.url} ${JSON.stringify(req.body)} success`
     );
@@ -10,7 +12,8 @@ class Response {
     };
   }
 
-  data(req, data, total = null) {
+  data(data, total = null) {
+    const { req } = useContext();
     logger.info(
       `[http server] request ${req.url} ${JSON.stringify(
         req.body
@@ -23,7 +26,8 @@ class Response {
       total,
     };
   }
-  error(req, { message }) {
+  error({ message }) {
+    const { req } = useContext();
     logger.error(
       `[http server] request ${req.url} ${JSON.stringify(
         req.body

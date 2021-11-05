@@ -4,6 +4,7 @@ import xlsx from "node-xlsx";
 /**
  * @api {GET} /api/user/export 导出用户数据
  * @apiGroup User
+ * @apiDescription 此接口需用浏览器打开实现下载
  */
 export default async () => {
   const ctx = useContext();
