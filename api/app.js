@@ -7,7 +7,7 @@ import responseTime from "response-time";
 import timeout from "connect-timeout";
 import compression from "compression";
 import { createConnection } from "typeorm";
-import ws from "@api/ws";
+// import ws from "@api/ws";
 import logger from "@api/utils/logger";
 import responser from "@api/middleware/responser";
 import path from "path";
@@ -21,7 +21,7 @@ console.log(process.env.NODE_ENV);
 const { WS_PORT, DATABASE_TYPE, DB_HOST, DB_PORT, DB_USER, DB_PASS, DATABASE } =
   process.env;
 
-ws.start(WS_PORT);
+// ws.start(WS_PORT);
 
 createConnection({
   type: DATABASE_TYPE,
