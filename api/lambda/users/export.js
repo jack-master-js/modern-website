@@ -2,8 +2,8 @@ import { useContext } from "@modern-js/runtime/server";
 import xlsx from "node-xlsx";
 
 /**
- * @api {GET} /api/user/export 导出用户数据
- * @apiGroup User
+ * @api {GET} /api/users/export 导出用户数据
+ * @apiGroup Users
  * @apiDescription 此接口需用浏览器打开实现下载
  */
 export default async () => {

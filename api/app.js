@@ -46,6 +46,7 @@ app.use(responser);
 /**
  * @api {POST} /api/upload 上传文件
  * @apiGroup Upload
+ * @apiParam {String} name 值设置成file
  */
 app.post("/api/upload", (req, res) => {
   const upload = multer.single("file");

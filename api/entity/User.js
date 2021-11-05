@@ -2,6 +2,7 @@ import { Entity, BaseEntity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 /**
  * @apiDefine UserEntity
+ * @apiBody {String} id id
  * @apiBody {String} name 姓名
  * @apiBody {Number} age 年龄
  */

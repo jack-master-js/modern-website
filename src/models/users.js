@@ -1,5 +1,5 @@
-import { model } from '@modern-js/runtime/model';
-import {GET as users} from '@api/lambda/user';
+import { model } from "@modern-js/runtime/model";
+import { GET as users } from "@api/lambda/users";
 
 export default model("user").define({
   state: {
@@ -9,17 +9,17 @@ export default model("user").define({
   },
   actions: {
     load: {
-        pending(draft) {
-          draft.pending = true;
-        },
-        rejected(draft, payload) {
-          draft.pending = false;
-          draft.error = payload;
-        },
-        fulfilled(draft, payload) {
-          draft.users = payload;
-        },
+      pending(draft) {
+        draft.pending = true;
       },
+      rejected(draft, payload) {
+        draft.pending = false;
+        draft.error = payload;
+      },
+      fulfilled(draft, payload) {
+        draft.users = payload;
+      },
+    },
   },
   effects: {
     async load() {

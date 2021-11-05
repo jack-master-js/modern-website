@@ -1,8 +1,8 @@
 import { useContext } from "@modern-js/runtime/server";
 
 /**
- * @api {GET} /api/user/login 用户登陆
- * @apiGroup User
+ * @api {GET} /api/users/login 用户登陆
+ * @apiGroup Users
  * @apiBody {String} userName 用户名
  * @apiBody {String} password 秘密
  * @apiBody {String} [code] 代码

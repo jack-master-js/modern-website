@@ -3,7 +3,7 @@ import { useModel } from "@modern-js/runtime/model";
 import countModel from "@/models/count";
 import userModel from "@/models/users";
 import { useLoader } from "@modern-js/runtime";
-import { GET as getUsers } from "@api/lambda/user";
+import { GET as getUsers } from "@api/lambda/users";
 import { Button } from 'antd';
 
 export default () => {
