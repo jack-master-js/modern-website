@@ -13,11 +13,14 @@ import auth from "@api/middleware/auth";
 import path from "path";
 import multer from "@api/utils/multer";
 
+const app = express();
+// app.use(cors());
+
 console.log(process.env.NODE_ENV);
 
 const { WS_PORT, DATABASE_TYPE, DB_HOST, DB_PORT, DB_USER, DB_PASS, DATABASE } =
   process.env;
-const app = express();
+
 ws.start(WS_PORT);
 
 createConnection({
@@ -36,9 +39,18 @@ createConnection({
   })
   .catch((error) => logger.error(error));
 
-app.use(cors());
+// middleware
+// app.use(auth);
 
-// session
+/**
+ * @api {POST} /api/upload 上传文件
+ * @apiGroup Upload
+ */
+app.post("/api/upload", multer.single("file"), (req, res, next) => {
+  res.send(`/uploads/${req.file.filename}`);
+});
+
+// session && cookie
 const sess = {
   secret: "sess key",
   name: "session_id", //默认connect.sid
@@ -60,17 +72,5 @@ app.use(
   )
 );
 app.use(timeout("3s")); //req.timeout
-
-// middleware
-// app.use(auth);
-
-// route
-/**
- * @api {POST} /api/upload 上传文件
- * @apiGroup Upload
- */
-app.post("/api/upload", multer.single("file"), (req, res, next) => {
-  res.send(`/uploads/${req.file.filename}`);
-});
 
 export default app;
