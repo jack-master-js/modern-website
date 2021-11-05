@@ -1,9 +1,9 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 /**
- * @apiDefine UserModel
- * @apiParam {String} name 姓名
- * @apiParam {Number} age 年龄
+ * @apiDefine UserEntity
+ * @apiBody {String} name 姓名
+ * @apiBody {Number} age 年龄
  */
 @Entity()
 export class User {

@@ -4,8 +4,6 @@ import { User } from "@api/entity/User";
 /**
  * @api {GET} /api/user 获取所有用户
  * @apiGroup User
- *
- * @apiUse UserModel
  */
 export const GET = async (req) => {
   let res = await getRepository(User).find();
@@ -14,8 +12,7 @@ export const GET = async (req) => {
 /**
  * @api {POST} /api/user 新增一个用户
  * @apiGroup User
- *
- * @apiUse UserModel
+ * @apiUse UserEntity
  */
 export const POST = async (req) => {
   try {

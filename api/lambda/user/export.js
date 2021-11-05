@@ -4,8 +4,6 @@ import xlsx from "node-xlsx";
 /**
  * @api {GET} /api/user/export 导出用户数据
  * @apiGroup User
- *
- * @apiUse UserModel
  */
 export default async () => {
   const ctx = useContext();

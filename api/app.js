@@ -13,6 +13,8 @@ import auth from "@api/middleware/auth";
 import path from "path";
 import multer from "@api/utils/multer";
 
+console.log(process.env.NODE_ENV);
+
 const { WS_PORT, DATABASE_TYPE, DB_HOST, DB_PORT, DB_USER, DB_PASS, DATABASE } =
   process.env;
 const app = express();
