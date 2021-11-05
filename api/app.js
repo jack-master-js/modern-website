@@ -32,12 +32,13 @@ createConnection({
   database: DATABASE,
   entities: [path.join(__dirname, "/entity/*.js")],
   synchronize: true,
-  logging: false,
+  logging: ["error"],
+  logger: "file",
 })
   .then((connection) => {
-    logger.info("[db] connected");
+    logger.info("数据库已连接!");
   })
-  .catch((error) => logger.error(error));
+  .catch((error) => logger.error("数据库连接失败！"));
 
 // middleware
 // app.use(auth);
