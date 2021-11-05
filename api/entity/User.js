@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 /**
  * @apiDefine UserEntity
@@ -6,7 +6,7 @@ import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
  * @apiBody {Number} age 年龄
  */
 @Entity()
-export class User {
+export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

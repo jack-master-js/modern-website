@@ -1,16 +1,20 @@
-import { getRepository } from "typeorm";
+import res from "@api/utils/response";
 import { User } from "@api/entity/User";
 
 /**
- * @api {GET} /api/user 获取所有用户
+ * @api {GET} /api/user 获取用户
  * @apiGroup User
  */
 export const GET = async (req) => {
-  let res = await getRepository(User).find();
-  return { code: 0, data: res };
+  try {
+    let rst = await User.find();
+    return res.data(req, rst);
+  } catch (error) {
+    return res.error(req, error);
+  }
 };
 /**
- * @api {POST} /api/user 新增一个用户
+ * @api {POST} /api/user 新增用户
  * @apiGroup User
  * @apiUse UserEntity
  */
@@ -20,10 +24,23 @@ export const POST = async (req) => {
     user.name = "test";
     user.age = 18;
 
-    let res = await getRepository(User).save(user);
-
-    return { code: 0, data: res };
+    let rst = await user.save();
+    return res.data(req, rst);
   } catch (error) {
-    return error;
+    return res.error(req, error);
   }
+};
+/**
+ * @api {PUT} /api/user 更新用户
+ * @apiGroup User
+ */
+export const PUT = async (req) => {
+  return "ok";
+};
+/**
+ * @api {DELETE} /api/user 删除用户
+ * @apiGroup User
+ */
+export const DELETE = async (req) => {
+  return "ok";
 };

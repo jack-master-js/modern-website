@@ -9,7 +9,7 @@ import compression from "compression";
 import { createConnection } from "typeorm";
 import ws from "@api/ws";
 import logger from "@api/utils/logger";
-import auth from "@api/middleware/auth";
+import responser from "@api/middleware/responser";
 import path from "path";
 import multer from "@api/utils/multer";
 
@@ -41,14 +41,21 @@ createConnection({
   .catch((error) => logger.error("数据库连接失败！"));
 
 // middleware
-// app.use(auth);
+app.use(responser);
 
 /**
  * @api {POST} /api/upload 上传文件
  * @apiGroup Upload
  */
-app.post("/api/upload", multer.single("file"), (req, res, next) => {
-  res.send(`/uploads/${req.file.filename}`);
+app.post("/api/upload", (req, res) => {
+  const upload = multer.single("file");
+  upload(req, res, (err) => {
+    if (err) {
+      res.error(err);
+    } else {
+      res.filePath();
+    }
+  });
 });
 
 // session && cookie
@@ -67,11 +74,12 @@ app.use(cookieParser()); //req.cookies || req.signedCookies
 
 // performance
 app.use(compression());
-app.use(
-  responseTime((req, res, time) =>
-    logger.info(`[http] request ${req.url} response time: ${time}ms`)
-  )
-);
+app.use(responseTime());
 app.use(timeout("3s")); //req.timeout
+
+// error
+app.use((err, req, res, next) => {
+  res.error(err);
+});
 
 export default app;

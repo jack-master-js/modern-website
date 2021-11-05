@@ -8,7 +8,8 @@
     "start": "modern start",
     "new": "modern new",
     "lint": "modern lint",
-    "apidoc": "apidoc -c apidoc/apidoc.json -i api/ -o apidoc/doc/"
+    "apidoc": "apidoc -c apidoc/apidoc.json -i api/ -o apidoc/doc/",
+    "apidocServer": "node ./apidoc/server.js"
   },
   "modernConfig": {
     "server": {

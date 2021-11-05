@@ -10,6 +10,5 @@ import { useContext } from "@modern-js/runtime/server";
 export default async (req) => {
   const ctx = useContext();
   ctx.res.cookie("sid", Math.random());
-
-  return { code: 0, message: "OK" };
+  return "ok";
 };
