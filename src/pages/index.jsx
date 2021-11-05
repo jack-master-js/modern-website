@@ -4,6 +4,7 @@ import countModel from "@/models/count";
 import userModel from "@/models/users";
 import { useLoader } from "@modern-js/runtime";
 import { GET as getUsers } from "@api/lambda/user";
+import { Button } from 'antd';
 
 export default () => {
   const [state, actions] = useModel(countModel);
@@ -38,10 +39,8 @@ export default () => {
     <>
       <div>
         <div>counter: {state.count}</div>
-        <button onClick={() => actions.add()}>add</button>
-        <button onClick={() => actions.setCount(state.count + 1)}>
-          set count
-        </button>
+        <Button type="primary" onClick={() => actions.add()}>add</Button>
+        <Button type="primary" onClick={() => actions.setCount(state.count + 1)}>set count</Button>
       </div>
       <div>{JSON.stringify(users)}</div>
       <div>{JSON.stringify(users1)}</div>
