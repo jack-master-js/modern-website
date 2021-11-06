@@ -20,7 +20,7 @@ export default async (req, res, next) => {
     logger.info(
       `[http server] request ${req.url} ${JSON.stringify(
         req.body
-      )} response data: ${JSON.stringify(content)}`
+      )} response content: ${JSON.stringify(content)}`
     );
   };
 
@@ -44,19 +44,19 @@ export default async (req, res, next) => {
     if (file) {
       let fileName = req.file.filename;
       let filePath = `/uploads/${fileName}`;
-      let data = {
+      let content = {
         file: fileName,
         path: filePath,
       };
 
       logger.info(
-        `[http server] request ${req.url} response data: ${JSON.stringify(
-          data
+        `[http server] request ${req.url} response content: ${JSON.stringify(
+          content
         )}`
       );
       return res.send({
         success: true,
-        data: data,
+        content: content,
       });
     } else if (files && files.length > 0) {
       let fileList = [];
@@ -71,13 +71,13 @@ export default async (req, res, next) => {
       }
 
       logger.info(
-        `[http server] request ${req.url} response data: ${JSON.stringify(
+        `[http server] request ${req.url} response content: ${JSON.stringify(
           fileList
         )}`
       );
       return res.send({
         success: true,
-        data: fileList,
+        content: fileList,
       });
     } else {
       throw Error("no file founded!");

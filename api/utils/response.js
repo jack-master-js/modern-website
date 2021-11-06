@@ -4,9 +4,7 @@ import { useContext } from "@modern-js/runtime/server";
 class Response {
   success() {
     const { req } = useContext();
-    logger.info(
-      `[http server] request ${req.url} ${JSON.stringify(req.body)} success`
-    );
+    logger.info(`[http server] request ${JSON.stringify(req)} success`);
     return {
       success: true,
     };
@@ -15,9 +13,9 @@ class Response {
   content(content, count = null) {
     const { req } = useContext();
     logger.info(
-      `[http server] request ${req.url} ${JSON.stringify(
-        req.body
-      )} response data: ${JSON.stringify(content)}`
+      `[http server] request ${JSON.stringify(
+        req
+      )} response content: ${JSON.stringify(content)}`
     );
 
     return {
@@ -29,9 +27,7 @@ class Response {
   error({ message }) {
     const { req } = useContext();
     logger.error(
-      `[http server] request ${req.url} ${JSON.stringify(
-        req.body
-      )} error: ${message}`
+      `[http server] request ${JSON.stringify(req)} error: ${message}`
     );
 
     return {
