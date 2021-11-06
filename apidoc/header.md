@@ -7,8 +7,8 @@ This example documentation contains all the possible configuration options for a
 ```json
 {
   "success": true, //成功
-  "data": {}, //数据
-  "total": 100, //分页总数
+  "content": {}, //数据内容
+  "count": 100, //记录总数
 }
 ```
 2. 失败返回
