@@ -9,7 +9,12 @@ import { User } from "@api/entity/User";
  */
 export const GET = async (req) => {
   try {
-    let [users, count] = await User.findAndCount(req.query);
+    const { pageIndex, pageSize, ...where } = req.query;
+    let [users, count] = await User.findAndCount({
+      where,
+      skip: pageIndex - 1,
+      take: pageSize,
+    });
     return res.content(users, count);
   } catch (error) {
     return res.error(error);

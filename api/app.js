@@ -38,7 +38,7 @@ createConnection({
   .then((connection) => {
     logger.info("数据库已连接!");
   })
-  .catch((error) => logger.error("数据库连接失败！"));
+  .catch((error) => logger.error(`数据库连接失败！ error: ${error.message}`));
 
 // middleware
 app.use(responser);
