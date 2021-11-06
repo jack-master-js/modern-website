@@ -10,17 +10,17 @@ export default async (req, res, next) => {
     );
   };
 
-  res.data = (data, total = null) => {
+  res.content = (content, count = null) => {
     res.send({
       success: true,
-      data,
-      total,
+      content,
+      count,
     });
 
     logger.info(
       `[http server] request ${req.url} ${JSON.stringify(
         req.body
-      )} response data: ${JSON.stringify(data)}`
+      )} response data: ${JSON.stringify(content)}`
     );
   };
 

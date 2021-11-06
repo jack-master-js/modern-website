@@ -12,18 +12,18 @@ class Response {
     };
   }
 
-  data(data, total = null) {
+  content(content, count = null) {
     const { req } = useContext();
     logger.info(
       `[http server] request ${req.url} ${JSON.stringify(
         req.body
-      )} response data: ${JSON.stringify(data)}`
+      )} response data: ${JSON.stringify(content)}`
     );
 
     return {
       success: true,
-      data,
-      total,
+      content,
+      count,
     };
   }
   error({ message }) {
